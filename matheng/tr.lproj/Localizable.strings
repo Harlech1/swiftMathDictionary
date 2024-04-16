@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  matheng
+
+  Created by Türker Kızılcık on 13.12.2023.
+  
+*/
+
+"home" = "Ana Sayfa";
+"quote" = "Günün Sözü";
+"article_for_day" = "Günün Makalesi";
+"todays_words" = "Günün Kelimeleri";
+"dictionary" = "Sözlük";
+"no_favorites" = "Favori Yok";
+"no_favorites_subtext" = "Henüz favoriler eklenmedi. Şimdi favorilerinize öğeler eklemeye başlayın.";
+"theme" = "Tema";
+"notifications" = "Notifikasyonlar";
+"article" = "Makale";
+"favorites" = "Favoriler";
+"color_picker" = "Renk Seçici";
+"time_picker" = "Zaman Seçici";
+"settings" = "Ayarlar";
+"language" = "Dil";
+"search" = "Arayın";
+"cancel" = "Vazgeç";
+"done" = "Bitti";

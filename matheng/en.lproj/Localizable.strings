@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  matheng
+
+  Created by Türker Kızılcık on 13.12.2023.
+  
+*/
+
+"home" = "Home";
+"quote" = "Quote of The Day";
+"article_for_day" = "Article of The Day";
+"todays_words" = "Today's Words to Learn";
+"dictionary"= "Dictionary";
+"no_favorites" = "No Favorites";
+"no_favorites_subtext" = "No favorites added yet. Start adding items to your favorites now.";
+"theme" = "Theme";
+"notifications" = "Notifications";
+"article" = "Article";
+"favorites" = "Favorites";
+"color_picker" = "Color Picker";
+"time_picker" = "Time Picker";
+"settings" = "Settings";
+"language" = "Language";
+"search" = "Search";
+"cancel" = "Cancel";
+"done" = "Done";

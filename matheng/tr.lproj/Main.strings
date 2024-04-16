@@ -1,0 +1,36 @@
+
+/* Class = "UITabBarItem"; title = "Favorites"; ObjectID = "CXi-P9-7IE"; */
+"CXi-P9-7IE.title" = "Favoriler";
+
+/* Class = "UINavigationItem"; title = "Article"; ObjectID = "OCH-y9-FJj"; */
+"OCH-y9-FJj.title" = "Makale";
+
+/* Class = "UINavigationItem"; title = "Favorites"; ObjectID = "Tdh-kR-IjZ"; */
+"Tdh-kR-IjZ.title" = "Favoriler";
+
+/* Class = "UIViewController"; title = "Home"; ObjectID = "ZOL-th-nsJ"; */
+"ZOL-th-nsJ.title" = "Ana Sayfa";
+
+/* Class = "UINavigationItem"; title = "Color Picker"; ObjectID = "a2L-Vc-Ylc"; */
+"a2L-Vc-Ylc.title" = "Renk Seçici";
+
+/* Class = "UITabBarItem"; title = "Dictionary"; ObjectID = "dZM-6a-Bad"; */
+"dZM-6a-Bad.title" = "Sözlük";
+
+/* Class = "UINavigationItem"; title = "Time Picker"; ObjectID = "gcb-H8-JoR"; */
+"gcb-H8-JoR.title" = "Zaman Seçici";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "kFo-yh-N6r"; */
+"kFo-yh-N6r.title" = "Ayarlar";
+
+/* Class = "UIBarButtonItem"; title = "Favorites"; ObjectID = "oTm-jv-rMn"; */
+"oTm-jv-rMn.title" = "Favoriler";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "plc-e9-EcT"; */
+"plc-e9-EcT.title" = "Ayarlar";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "rdb-in-t3E"; */
+"rdb-in-t3E.title" = "Ana Sayfa";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "xCd-mt-FkY"; */
+"xCd-mt-FkY.title" = "Ana Sayfa";
