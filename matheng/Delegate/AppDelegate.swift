@@ -10,15 +10,8 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                //print("Kullanıcı bildirim iznini verdi.")
-            } else {
-                //print("Kullanıcı bildirim iznini vermedi.")
-            }
-        }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in }
         determineInitialAppLanguage()
         UIApplication.shared.applicationIconBadgeNumber = 0
         return true

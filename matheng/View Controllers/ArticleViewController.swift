@@ -15,7 +15,7 @@ class ArticleViewController: UIViewController {
     var scripts = Constants.scripts
 
     let textView : UITextView = {
-        let textView : UITextView = UITextView()
+        let textView = UITextView()
         textView.backgroundColor = UIColor.secondarySystemGroupedBackground
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -46,5 +46,4 @@ class ArticleViewController: UIViewController {
             textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
 }

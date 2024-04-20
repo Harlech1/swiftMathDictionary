@@ -21,7 +21,6 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
 
-    // MARK: Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +53,6 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
         }
     }
 
-    //    MARK: Private Functions
     private func updateSections() {
         sections.removeAll()
 
@@ -69,7 +67,6 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
                 sections[firstLetter]?.append(word)
             }
         }
-
         tableView.reloadData()
     }
 
@@ -85,8 +82,6 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
-
-
     private func filterContentForSearchText(_ searchText: String) {
         if searchText.isEmpty {
             filteredData = turkishWords
@@ -96,14 +91,11 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
             }
         }
         updateSections()
-
     }
-
 }
 
 extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
 
-    // MARK: Table View Functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.keys.count
     }
@@ -113,13 +105,11 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate, 
         return sortedSectionTitles[section]
     }
 
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sortedSectionTitles = sections.keys.sorted()
         let sectionTitle = sortedSectionTitles[section]
         return sections[sectionTitle]?.count ?? 0
     }
-
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
@@ -132,7 +122,6 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate, 
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         let sortedSectionTitles = sections.keys.sorted()
         let sectionTitle = sortedSectionTitles[indexPath.section]
         let wordsInSection = sections[sectionTitle] ?? []
@@ -143,7 +132,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate, 
         selectedIndex = indexInOriginalData
         performSegue(withIdentifier: "toDetails", sender: nil)
     }
-    // MARK: Search Bar Functions
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         filteredData = turkishWords
         tableView.reloadData()
@@ -155,11 +144,4 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate, 
         }
         filterContentForSearchText(searchText)
     }
-
-    //    func sortedSections(_ section: Int) -> [String] {
-    //        let turkish = Locale(identifier: "tr")
-    //        let sortedSectionTitles = sections.keys.sorted()
-    //        let sectionTitle = sortedSectionTitles[section]
-    //        return sectionTitle
-    //    }
 }

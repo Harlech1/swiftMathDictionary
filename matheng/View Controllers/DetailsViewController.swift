@@ -5,34 +5,30 @@
 //  Created by Turker Kizilcik on 11.10.2023.
 //
 
-import UIKit
-import AVFoundation
 import WebKit
 import CoreData
-import Network
 
 class DetailsViewController: UIViewController, WKNavigationDelegate {
 
     var chosenIndex = 0
 
-    var webView : WKWebView!
+    var webView: WKWebView!
     var count = 0
-    var chosenWord : String?
-    var chosenWordID : UUID?
+    var chosenWord: String?
+    var chosenWordID: UUID?
 
-    let turkishWords: [String] = Constants.turkishWords
-
+    let turkishWords = Constants.turkishWords
 
     // MARK: Views
-    let rectangleView : UIView = {
-        let view : UIView = UIView()
+    let rectangleView: UIView = {
+        let view = UIView()
         view.backgroundColor = UIColor.systemGroupedBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    let labelForTitle : UILabel = {
-        let label : UILabel = UILabel()
+    let labelForTitle: UILabel = {
+        let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +66,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         let queue = DispatchQueue(label: "MonitorDispatchQueue")
         monitor.start(queue: queue)
 
-
         view.addSubview(webView)
 
         rectangleView.addSubview(labelForTitle)
@@ -95,7 +90,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
             return false
         }
     }
-
 
     private func toggleFavoriteStatus(forWord word: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -163,11 +157,11 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         NotificationCenter.default.post(name: NSNotification.Name("newData"), object:nil)
         self.navigationController?.popViewController(animated: true)
     }
-    // MARK: WebView Functions
 
+    // MARK: WebView Functions
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let nsError = error as NSError
-
+        
         switch nsError.code {
         case NSURLErrorNotConnectedToInternet:
             showError(title: "İnternet Bağlantısı Yok", message: "Lütfen internet bağlantınızı kontrol edin.")
@@ -196,7 +190,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
-
     private func callUrl(name: String) {
         let originalString = name
         if let encodedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
@@ -208,9 +201,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
-
     // MARK: Functions
-
     private func showError(title: String, message: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

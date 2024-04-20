@@ -17,7 +17,6 @@ class LanguageViewController: UIViewController {
     var totalHeight : CGFloat = 0.0
     var tableView : UITableView!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,9 +55,7 @@ class LanguageViewController: UIViewController {
             tableView.heightAnchor.constraint(equalToConstant: totalHeight),
         ])
     }
-
 }
-
 
 extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
 
@@ -67,7 +64,6 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let appLanguage = UserDefaults.standard.string(forKey: "appLanguage") ?? "en"
 
         if(appLanguage == "tr") {
@@ -136,7 +132,4 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
             window.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         }
     }
-
-
-
 }

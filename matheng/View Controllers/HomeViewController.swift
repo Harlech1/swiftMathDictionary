@@ -4,14 +4,8 @@
 //
 //  Created by Turker Kizilcik on 11.10.2023.
 //
-// bildirimleri kapatma yeri
-// badge sayısı araştırma
-// localizable
-// appannie
-// dynamic font
 
 import UIKit
-import CoreData
 
 class HomeViewController: UIViewController {
 
@@ -19,20 +13,16 @@ class HomeViewController: UIViewController {
     var selectedIndex = 0
     var labels: [UILabel] = []
 
-    // MARK: Container Views
-
     var containerViewForQuote: UIView!
     var containerViewForArticle: UIView!
     var containerViewForPageControl: UIView!
-
-    // MARK: Label Views
 
     var quoteLabel: UILabel!
     var articleLabel: UILabel!
     var threeWordsLabel: UILabel!
 
     lazy var articleLabelToLink : UILabel = {
-        let label: UILabel = UILabel()
+        let label = UILabel()
         label.numberOfLines = 2
         label.textColor = UIColor.link
         label.font = FontHelper.scaledFont17
@@ -44,7 +34,7 @@ class HomeViewController: UIViewController {
 
     // MARK: TextView + ScrollView + Page Control Views
     lazy var quoteTextView: UITextView = {
-        let textView: UITextView = UITextView()
+        let textView = UITextView()
         textView.layer.borderColor = UIColor.myOrange.cgColor
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
@@ -55,17 +45,16 @@ class HomeViewController: UIViewController {
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 15
 
-        // Shadow özellikleri
+        // Shadow properties
         textView.layer.shadowColor = UIColor.systemGray.cgColor
         textView.layer.shadowOpacity = 0.5
         textView.layer.shadowOffset = CGSize(width: 2, height: 2)
         textView.layer.shadowRadius = 4
-
         return textView
     }()
 
     lazy var scrollView: UIScrollView = {
-        let sv: UIScrollView = UIScrollView()
+        let sv = UIScrollView()
         sv.isPagingEnabled = true
         sv.showsHorizontalScrollIndicator = false
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -73,14 +62,14 @@ class HomeViewController: UIViewController {
     }()
 
     lazy var scrollViewForPage: UIScrollView = {
-        let sv: UIScrollView = UIScrollView()
+        let sv = UIScrollView()
         sv.isScrollEnabled = true
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
 
     lazy var pageControl: UIPageControl = {
-        let pg : UIPageControl = UIPageControl()
+        let pg = UIPageControl()
         pg.currentPage = 0
         pg.tintColor = .myOrange
         pg.currentPageIndicatorTintColor = .myOrange
@@ -91,7 +80,6 @@ class HomeViewController: UIViewController {
 
     // MARK: Constants
     let quotes = Constants.mathQuotes
-    let scripts = Constants.scripts
     let headers = Constants.headers
     let turkishWords = Constants.turkishWords
 
@@ -130,7 +118,6 @@ class HomeViewController: UIViewController {
         containerViewForPageControl.addSubview(scrollView)
         containerViewForPageControl.addSubview(pageControl)
 
-        // MARK: Page Control
         pageControl.numberOfPages = selectedWords.count
         pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
 
@@ -145,7 +132,6 @@ class HomeViewController: UIViewController {
         setScrollView()
     }
 
-    // MARK: Constraints
     private func setUpConstraintsForPageScrollView() {
         NSLayoutConstraint.activate([
             scrollViewForPage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -222,7 +208,6 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: UI Functions
-
     private func createContainerView() -> UIView {
         let view = UIView()
         view.backgroundColor = UIColor.secondarySystemGroupedBackground
@@ -251,9 +236,7 @@ class HomeViewController: UIViewController {
         threeWordsLabel = createLabel(text: "todays_words".localized)
     }
 
-
     private func setScrollView() {
-
         var offset: CGFloat = 0.0
 
         for text in selectedWords {
@@ -279,10 +262,8 @@ class HomeViewController: UIViewController {
 
             offset += view.frame.width
         }
-
         scrollView.contentSize = CGSize(width: offset, height: scrollView.frame.height)
     }
-
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
@@ -318,8 +299,6 @@ class HomeViewController: UIViewController {
                 tabBarController?.tabBar.tintColor = .myOrange
             }
         }
-
-
         scheduleDailyUpdateForQuotes()
     }
 
@@ -332,14 +311,12 @@ class HomeViewController: UIViewController {
         scrollViewForPage.contentSize = CGSize(width: scrollViewForPage.frame.size.width, height: totalHeight)
     }
 
-    // MARK: Methods
     private func addTapGesture(to view: UIView, target: Any, action: Selector) {
         let tapGesture = UITapGestureRecognizer(target: target, action: action)
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
     }
 
-    //extensions
     private func underline() -> NSAttributedString? {
         // MARK: Article Label To Link
         let attributedString = NSMutableAttributedString(string: UserDefaults.standard.string(forKey: "wordOfTheDayLabel") ?? "Error, try restarting.")
@@ -370,7 +347,7 @@ class HomeViewController: UIViewController {
             generateRandom3WordsOfTheDay()
 
             UserDefaults.standard.set(Date(), forKey: "lastUpdateDateFor3Words")
-
+            
             UserDefaults.standard.set(selectedWords[0], forKey: "wordOfTheDayLabelFor3Words1")
             UserDefaults.standard.set(selectedWords[1], forKey: "wordOfTheDayLabelFor3Words2")
             UserDefaults.standard.set(selectedWords[2], forKey: "wordOfTheDayLabelFor3Words3")
@@ -429,9 +406,6 @@ class HomeViewController: UIViewController {
     @objc func goToDictionary() {
         performSegue(withIdentifier: "toDictionaryInHome", sender: nil)
     }
-
 }
 
-extension HomeViewController: UIScrollViewDelegate {
-
-}
+extension HomeViewController: UIScrollViewDelegate {}

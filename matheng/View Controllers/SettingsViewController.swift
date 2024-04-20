@@ -9,8 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var tableView : UITableView!
-    var totalHeight : CGFloat = 0.0
+    var tableView: UITableView!
+    var totalHeight: CGFloat = 0.0
     let settingsData = ["theme".localized, "notifications".localized, "language".localized]
     let images = ["paintpalette.fill","bell.fill","globe"]
     let appLanguage = UserDefaults.standard.string(forKey: "appLanguage") ?? "en"
@@ -30,7 +30,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
 
         view.addSubview(tableView)
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +37,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         var languageString = ""
 
         if(appLanguage == "tr") {
@@ -88,7 +86,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 tabBarController?.tabBar.tintColor = .myOrange
             }
         }
-        
         return cell
     }
 
@@ -97,7 +94,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "toColorPicker", sender: nil)
@@ -123,15 +119,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
     }
 
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//        UIView.animate(withDuration: 1) {
-//            contant = UIScreen.main.bounds.height / 2
-//            self.view.layoutIfNeeded()
-//        }
-//    }
-
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -144,6 +131,5 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
         tableView.reloadData()
     }
-
 }
 

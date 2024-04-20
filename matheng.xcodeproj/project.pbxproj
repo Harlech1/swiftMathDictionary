@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95E5D0EC2AD8116500B3763B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5D0EB2AD8116500B3763B /* FavoritesViewController.swift */; };
-		95E5D0EE2AD8262E00B3763B /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5D0ED2AD8262E00B3763B /* Trash.swift */; };
 		D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12D17662B172A5C00D723A5 /* FavoritesModel.xcdatamodeld */; };
 		D14807972AD5F80000BB93BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807962AD5F80000BB93BA /* AppDelegate.swift */; };
 		D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807982AD5F80000BB93BA /* SceneDelegate.swift */; };
@@ -16,7 +15,6 @@
 		D14807A02AD5F80100BB93BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D148079F2AD5F80100BB93BA /* Assets.xcassets */; };
 		D14807A32AD5F80100BB93BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14807A12AD5F80100BB93BA /* LaunchScreen.storyboard */; };
 		D15B68182B213AAA00E29958 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15B68172B213AAA00E29958 /* TimePickerViewController.swift */; };
-		D15B681A2B21529000E29958 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15B68192B21529000E29958 /* SettingTableViewCell.swift */; };
 		D17E019E2AE534940043A42B /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17E019D2AE534940043A42B /* ArticleViewController.swift */; };
 		D18167372AD6FA6300C3D552 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18167362AD6FA6300C3D552 /* HomeViewController.swift */; };
 		D18167392AD6FA7600C3D552 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18167382AD6FA7600C3D552 /* SettingsViewController.swift */; };
@@ -33,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		95E5D0EB2AD8116500B3763B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		95E5D0ED2AD8262E00B3763B /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		D12D17672B172A5C00D723A5 /* FavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesModel.xcdatamodel; sourceTree = "<group>"; };
 		D14807932AD5F80000BB93BA /* matheng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matheng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14807962AD5F80000BB93BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +40,6 @@
 		D14807A22AD5F80100BB93BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D14807A42AD5F80100BB93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D15B68172B213AAA00E29958 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
-		D15B68192B21529000E29958 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		D17E019D2AE534940043A42B /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		D18167362AD6FA6300C3D552 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D18167382AD6FA7600C3D552 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -72,14 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		95E5D0EF2AD8263B00B3763B /* Trash */ = {
-			isa = PBXGroup;
-			children = (
-				95E5D0ED2AD8262E00B3763B /* Trash.swift */,
-			);
-			path = Trash;
-			sourceTree = "<group>";
-		};
 		D1006BA92AD990E8006B89C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,12 +95,10 @@
 		D14807952AD5F80000BB93BA /* matheng */ = {
 			isa = PBXGroup;
 			children = (
-				95E5D0EF2AD8263B00B3763B /* Trash */,
 				D18167422AD7337100C3D552 /* Model */,
 				D181673D2AD6FA9800C3D552 /* View Controllers */,
 				D181673C2AD6FA9200C3D552 /* Delegate */,
 				D1B364132B1377AC00570DB9 /* Utils */,
-				D15B681B2B21529F00E29958 /* Cells */,
 				D148079C2AD5F80000BB93BA /* Main.storyboard */,
 				D148079F2AD5F80100BB93BA /* Assets.xcassets */,
 				D14807A12AD5F80100BB93BA /* LaunchScreen.storyboard */,
@@ -121,14 +107,6 @@
 				D1E7ED9A2B2A0E7F0086BBAE /* Localizable.strings */,
 			);
 			path = matheng;
-			sourceTree = "<group>";
-		};
-		D15B681B2B21529F00E29958 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				D15B68192B21529000E29958 /* SettingTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		D181673C2AD6FA9200C3D552 /* Delegate */ = {
@@ -257,8 +235,6 @@
 				D18167392AD6FA7600C3D552 /* SettingsViewController.swift in Sources */,
 				D181673F2AD72FAB00C3D552 /* DetailsViewController.swift in Sources */,
 				D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */,
-				95E5D0EE2AD8262E00B3763B /* Trash.swift in Sources */,
-				D15B681A2B21529000E29958 /* SettingTableViewCell.swift in Sources */,
 				D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */,
 				95E5D0EC2AD8116500B3763B /* FavoritesViewController.swift in Sources */,
 				D17E019E2AE534940043A42B /* ArticleViewController.swift in Sources */,

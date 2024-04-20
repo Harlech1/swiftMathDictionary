@@ -16,14 +16,14 @@ class FavoritesViewController: UIViewController{
     var idArray = [UUID]()
 
     var selectedWord = ""
-    var selectedWordID : UUID?
+    var selectedWordID: UUID?
 
     var selectedIndex = 0
 
     let turkishWords: [String] = Constants.turkishWords
 
     let containerView: UIView = {
-        let view: UIView = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -32,18 +32,15 @@ class FavoritesViewController: UIViewController{
     let upperLabel: UILabel = {
         let label: UILabel = UILabel()
         label.textAlignment = .center
-
         let attributedString = NSMutableAttributedString(string: "no_favorites".localized)
         attributedString.addAttributes([.font: UIFont.boldSystemFont(ofSize: 21.0)], range: NSRange(location: 0, length: attributedString.length))
-
         label.attributedText = attributedString
-
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let lowerLabel: UILabel = {
-        let label: UILabel = UILabel()
+        let label = UILabel()
         label.text = "no_favorites_subtext".localized
         label.textAlignment = .center
         label.numberOfLines = 3
@@ -66,7 +63,6 @@ class FavoritesViewController: UIViewController{
         tableView.dataSource = self
 
         getData()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -104,11 +100,9 @@ class FavoritesViewController: UIViewController{
 
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: "newData"), object: nil)
         tableView.reloadData()
-        
     }
 
     @objc func getData() {
-
         wordArray.removeAll(keepingCapacity: false)
         idArray.removeAll(keepingCapacity:  false)
 
@@ -125,18 +119,15 @@ class FavoritesViewController: UIViewController{
                     if let word = result.value(forKey: "word") as? String {
                         self.wordArray.append(word)
                     }
-
                     if let id = result.value(forKey: "id") as? UUID {
                         self.idArray.append(id)
                     }
-
                     self.tableView.reloadData()
                 }
             }
         } catch {
             print("error")
         }
-
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -145,7 +136,6 @@ class FavoritesViewController: UIViewController{
             destinationVC.chosenWord = selectedWord
             destinationVC.chosenWordID = selectedWordID
         }
-
     }
 }
 
@@ -190,7 +180,6 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                                 wordArray.remove(at: indexPath.row)
                                 idArray.remove(at: indexPath.row)
                                 self.tableView.reloadData()
-
                                 do {
                                     try context.save()
                                 } catch {
@@ -206,6 +195,4 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
-
 }

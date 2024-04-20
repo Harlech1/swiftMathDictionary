@@ -26,9 +26,8 @@ class ColorPickerViewController: UIViewController {
         UIColor(red: 246/255, green: 201/255, blue: 215/255, alpha: 1.0) // Sadness rengi
     ]
 
-
     let containerView: UIView = {
-        let view: UIView = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.secondarySystemGroupedBackground
         view.layer.cornerRadius = 15
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,20 +56,14 @@ class ColorPickerViewController: UIViewController {
             containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
-
     }
 
-
-    // Cancel button action
     @objc func cancelButtonTapped() {
         performSegue(withIdentifier: "unwindSegue", sender: self)
     }
 
-    // Done button action
     @objc func doneButtonTapped() {
-        guard let tappedColorView = lastTappedColorView else {
-            return
-        }
+        guard let tappedColorView = lastTappedColorView else { return }
 
         let color = tappedColorView.backgroundColor
 
@@ -81,10 +74,8 @@ class ColorPickerViewController: UIViewController {
         } catch {
             print("Hata: \(error)")
         }
-
         performSegue(withIdentifier: "unwindSegue", sender: self)
     }
-
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -103,7 +94,6 @@ class ColorPickerViewController: UIViewController {
                 }
             } catch {}
         }
-
     }
 
     func getOffset() -> CGFloat {
@@ -145,12 +135,9 @@ class ColorPickerViewController: UIViewController {
                     colorView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -getOffset()),
                 ])
             }
-
-
             offsetX += getOffset() + 40
         }
     }
-
 
     @objc func colorViewTapped(_ sender: UITapGestureRecognizer) {
         guard let tappedColorView = sender.view else { return }
@@ -166,7 +153,6 @@ class ColorPickerViewController: UIViewController {
 
         tappedColorView.layer.borderWidth = borderWidth
         tappedColorView.layer.borderColor = borderColor.cgColor
-
     }
 }
 

@@ -24,15 +24,6 @@ class TimePickerViewController: UIViewController {
         return timePicker
     }()
 
-//    var tableView : UITableView = {
-//        let tableView : UITableView = UITableView()
-//        tableView.isHidden = false
-//        tableView.layer.cornerRadius = 15
-//        tableView.isScrollEnabled = false
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        return tableView
-//    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,14 +32,6 @@ class TimePickerViewController: UIViewController {
         view.backgroundColor = UIColor.systemGroupedBackground
 
         view.addSubview(timePicker)
-
-//        tableView = UITableView()
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//
-//        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: "settingsCell")
-//
-//        view.addSubview(tableView)
 
         let doneButton = UIBarButtonItem(title: "done".localized, style: .done, target: self, action: #selector(doneButtonTapped))
         navigationItem.rightBarButtonItem = doneButton
@@ -69,8 +52,7 @@ class TimePickerViewController: UIViewController {
             let selectedTime = defaultDate
             UserDefaults.standard.set(selectedTime, forKey: selectedTimeKey)
         }
-
-
+        
         setUpConstraints()
         scheduleDailyNotificationFromUserDefaults()
     }
@@ -81,11 +63,6 @@ class TimePickerViewController: UIViewController {
             timePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             timePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             timePicker.heightAnchor.constraint(equalToConstant: 200),
-
-//            tableView.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: 20),
-//            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-//            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-//            tableView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
 
@@ -140,7 +117,6 @@ class TimePickerViewController: UIViewController {
                 tabBarController?.tabBar.tintColor = .myOrange
             }
         }
-        
     }
 
     @objc func timeChanged(sender: UIDatePicker) {
@@ -156,18 +132,3 @@ class TimePickerViewController: UIViewController {
         scheduleDailyNotificationFromUserDefaults()
     }
 }
-
-//extension TimePickerViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return settingsOptions.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsTableViewCell
-//        let image = UIImage(systemName: "app.badge.fill")
-//        cell.imageView?.image = image
-//        cell.textLabel?.text = settingsOptions[indexPath.row]
-//        return cell
-//    }
-//}
