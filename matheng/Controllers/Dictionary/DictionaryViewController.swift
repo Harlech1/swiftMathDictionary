@@ -9,7 +9,7 @@ import UIKit
 
 class DictionaryViewController: UIViewController, UISearchControllerDelegate {
 
-    var turkishWords = Constants.turkishWords
+    var turkishWords = Constant.Words.turkishWords
 
     var selectedIndex = 0
 

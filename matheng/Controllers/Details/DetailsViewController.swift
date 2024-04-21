@@ -17,7 +17,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
     var chosenWord: String?
     var chosenWordID: UUID?
 
-    let turkishWords = Constants.turkishWords
+    let turkishWords = Constant.Words.turkishWords
 
     let rectangleView: UIView = {
         let view = UIView()

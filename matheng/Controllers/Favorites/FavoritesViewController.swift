@@ -20,7 +20,7 @@ class FavoritesViewController: UIViewController{
 
     var selectedIndex = 0
 
-    let turkishWords: [String] = Constants.turkishWords
+    let turkishWords: [String] = Constant.Words.turkishWords
 
     let containerView: UIView = {
         let view = UIView()

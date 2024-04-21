@@ -10,7 +10,7 @@ import UIKit
 
 extension Constant {
     struct Colors {
-        let appThemeColors: [UIColor] = [
+        static let appThemeColors: [UIColor] = [
             UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1.0), // Kırmızı tonu
             UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1.0), // Turuncu tonu
             UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0), // Sarı tonu

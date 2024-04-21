@@ -11,8 +11,8 @@ class ArticleViewController: UIViewController {
     
     var chosenIndex = 0
     
-    var headers = Constants.headers
-    var scripts = Constants.scripts
+    var headers = Constant.Article.headers
+    var scripts = Constant.Article.scripts
 
     let textView: UITextView = {
         let textView = UITextView()

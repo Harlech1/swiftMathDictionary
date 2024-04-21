@@ -79,9 +79,9 @@ class HomeViewController: UIViewController {
     }()
 
     // MARK: Constants
-    let quotes = Constants.mathQuotes
-    let headers = Constants.headers
-    let turkishWords = Constants.turkishWords
+    let quotes = Constant.Quotes.mathematicalQuotes
+    let headers = Constant.Article.headers
+    let turkishWords = Constant.Words.turkishWords
 
     override func viewDidLoad() {
         super.viewDidLoad()
