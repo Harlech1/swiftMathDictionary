@@ -18,6 +18,7 @@
 		D126EE362BD55410001DBD0E /* DetailsViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */; };
 		D126EE382BD559A5001DBD0E /* DictionaryViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE372BD559A5001DBD0E /* DictionaryViewController+UI.swift */; };
 		D126EE3A2BD55E6F001DBD0E /* FavoritesViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE392BD55E6F001DBD0E /* FavoritesViewController+UI.swift */; };
+		D126EE3C2BD5615E001DBD0E /* HomeViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE3B2BD5615E001DBD0E /* HomeViewController+UI.swift */; };
 		D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12D17662B172A5C00D723A5 /* FavoritesModel.xcdatamodeld */; };
 		D14807972AD5F80000BB93BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807962AD5F80000BB93BA /* AppDelegate.swift */; };
 		D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807982AD5F80000BB93BA /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 		D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UI.swift"; sourceTree = "<group>"; };
 		D126EE372BD559A5001DBD0E /* DictionaryViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DictionaryViewController+UI.swift"; sourceTree = "<group>"; };
 		D126EE392BD55E6F001DBD0E /* FavoritesViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesViewController+UI.swift"; sourceTree = "<group>"; };
+		D126EE3B2BD5615E001DBD0E /* HomeViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UI.swift"; sourceTree = "<group>"; };
 		D12D17672B172A5C00D723A5 /* FavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesModel.xcdatamodel; sourceTree = "<group>"; };
 		D14807932AD5F80000BB93BA /* matheng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matheng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14807962AD5F80000BB93BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D18167362AD6FA6300C3D552 /* HomeViewController.swift */,
+				D126EE3B2BD5615E001DBD0E /* HomeViewController+UI.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */,
 				D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */,
 				D126EE2E2BD5019D001DBD0E /* Constant+Colors.swift in Sources */,
+				D126EE3C2BD5615E001DBD0E /* HomeViewController+UI.swift in Sources */,
 				95E5D0EC2AD8116500B3763B /* FavoritesViewController.swift in Sources */,
 				D126EE2A2BD4FF9A001DBD0E /* Constant+Articles.swift in Sources */,
 				D126EE342BD50AAB001DBD0E /* ColorPickerViewController+UI.swift in Sources */,

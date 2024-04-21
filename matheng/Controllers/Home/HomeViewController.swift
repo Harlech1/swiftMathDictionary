@@ -9,74 +9,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    var selectedWords : [String] = ["Placeholder_1","Placeholder_2","Placeholder_3"]
+    var selectedWords: [String] = ["Placeholder_1","Placeholder_2","Placeholder_3"]
     var selectedIndex = 0
     var labels: [UILabel] = []
 
-    var containerViewForQuote: UIView!
-    var containerViewForArticle: UIView!
-    var containerViewForPageControl: UIView!
+    lazy var containerViewForQuote = initContainerView()
+    lazy var containerViewForArticle = initContainerView()
+    lazy var containerViewForPageControl = initContainerView()
 
-    var quoteLabel: UILabel!
-    var articleLabel: UILabel!
-    var threeWordsLabel: UILabel!
+    lazy var quoteLabel = initLabel(text: "quote".localized)
+    lazy var articleLabel = initLabel(text: "article_for_day".localized)
+    lazy var threeWordsLabel = initLabel(text: "todays_words".localized)
 
-    lazy var articleLabelToLink : UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
-        label.textColor = UIColor.link
-        label.font = FontHelper.scaledFont17
-        label.clipsToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.isUserInteractionEnabled = true
-        return label
-    }()
+    lazy var articleLabelToLink = initLinkLabel()
+    lazy var quoteTextView = initQuoteTextView()
 
-    // MARK: TextView + ScrollView + Page Control Views
-    lazy var quoteTextView: UITextView = {
-        let textView = UITextView()
-        textView.layer.borderColor = UIColor.myOrange.cgColor
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.isScrollEnabled = false
-        textView.font = FontHelper.scaledFont18
-        textView.isEditable = false
-        textView.isSelectable = false
-        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 15
-
-        // Shadow properties
-        textView.layer.shadowColor = UIColor.systemGray.cgColor
-        textView.layer.shadowOpacity = 0.5
-        textView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        textView.layer.shadowRadius = 4
-        return textView
-    }()
-
-    lazy var scrollView: UIScrollView = {
-        let sv = UIScrollView()
-        sv.isPagingEnabled = true
-        sv.showsHorizontalScrollIndicator = false
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-
-    lazy var scrollViewForPage: UIScrollView = {
-        let sv = UIScrollView()
-        sv.isScrollEnabled = true
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-
-    lazy var pageControl: UIPageControl = {
-        let pg = UIPageControl()
-        pg.currentPage = 0
-        pg.tintColor = .myOrange
-        pg.currentPageIndicatorTintColor = .myOrange
-        pg.pageIndicatorTintColor = .gray
-        pg.translatesAutoresizingMaskIntoConstraints = false
-        return pg
-    }()
+    lazy var scrollView = initScrollView()
+    lazy var scrollViewForPage = initScrollView()
+    lazy var pageControl = initPageControl()
 
     // MARK: Constants
     let quotes = Constant.Quotes.mathematicalQuotes
@@ -95,145 +45,17 @@ class HomeViewController: UIViewController {
 
         view.backgroundColor = UIColor.systemGroupedBackground
 
-        view.addSubview(scrollViewForPage)
-
-        setUpContainerViews()
-        setUpLabels()
-
-        scrollViewForPage.addSubview(containerViewForQuote)
-
-        containerViewForQuote.addSubview(quoteLabel)
-        containerViewForQuote.addSubview(quoteTextView)
-
-        scrollViewForPage.addSubview(containerViewForArticle)
-
-        containerViewForArticle.addSubview(articleLabel)
-        containerViewForArticle.addSubview(articleLabelToLink)
+        addSubviews()
 
         articleLabelToLink.attributedText = underline()
         addTapGesture(to: articleLabelToLink, target: self, action: #selector(labelTappedToArticle))
 
-        scrollViewForPage.addSubview(containerViewForPageControl)
-        containerViewForPageControl.addSubview(threeWordsLabel)
-        containerViewForPageControl.addSubview(scrollView)
-        containerViewForPageControl.addSubview(pageControl)
-
         pageControl.numberOfPages = selectedWords.count
         pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
 
-        scrollView.delegate = self
-
-        setUpConstraintsForPageScrollView()
-        setUpConstraintsForQuote()
-        setUpConstraintsForArticle()
-        setUpConstraintsForPageControl()
-
+        setupConstraints()
         scheduleDailyUpdate()
         setScrollView()
-    }
-
-    private func setUpConstraintsForPageScrollView() {
-        NSLayoutConstraint.activate([
-            scrollViewForPage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollViewForPage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollViewForPage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollViewForPage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-
-    private func setUpConstraintsForQuote() {
-        NSLayoutConstraint.activate([
-            // Container View for Quote Constraints
-            containerViewForQuote.topAnchor.constraint(equalTo: scrollViewForPage.topAnchor, constant: 0),
-            containerViewForQuote.leadingAnchor.constraint(equalTo: scrollViewForPage.frameLayoutGuide.leadingAnchor, constant: 20),
-            containerViewForQuote.trailingAnchor.constraint(equalTo: scrollViewForPage.frameLayoutGuide.trailingAnchor, constant: -20),
-
-            // Quote Label Constraints
-            quoteLabel.topAnchor.constraint(equalTo: containerViewForQuote.topAnchor, constant: 12),
-            quoteLabel.leadingAnchor.constraint(equalTo: containerViewForQuote.leadingAnchor, constant: 8),
-            quoteLabel.trailingAnchor.constraint(equalTo: containerViewForQuote.trailingAnchor, constant: -8),
-
-            // Quote Text View Constraints
-            quoteTextView.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 12),
-            quoteTextView.leadingAnchor.constraint(equalTo: containerViewForQuote.leadingAnchor, constant: 8),
-            quoteTextView.trailingAnchor.constraint(equalTo: containerViewForQuote.trailingAnchor, constant: -8),
-            quoteTextView.bottomAnchor.constraint(equalTo: containerViewForQuote.bottomAnchor, constant: -8),
-        ])
-    }
-
-    private func setUpConstraintsForArticle() {
-        NSLayoutConstraint.activate([
-            // Container View for Article Constraints/
-            containerViewForArticle.topAnchor.constraint(equalTo: containerViewForQuote.bottomAnchor, constant: 20),
-            containerViewForArticle.leadingAnchor.constraint(equalTo: scrollViewForPage.frameLayoutGuide.leadingAnchor, constant: 20),
-            containerViewForArticle.trailingAnchor.constraint(equalTo: scrollViewForPage.frameLayoutGuide.trailingAnchor, constant: -20),
-
-            // Article Label Constraints
-            articleLabel.topAnchor.constraint(equalTo: containerViewForArticle.topAnchor, constant: 12),
-            articleLabel.leadingAnchor.constraint(equalTo: containerViewForArticle.leadingAnchor, constant: 8),
-            articleLabel.trailingAnchor.constraint(equalTo: containerViewForArticle.trailingAnchor, constant: -8),
-
-            // Article Label to Link Constraints
-            articleLabelToLink.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 12),
-            articleLabelToLink.leadingAnchor.constraint(equalTo: containerViewForArticle.leadingAnchor, constant: 8),
-            articleLabelToLink.trailingAnchor.constraint(equalTo: containerViewForArticle.trailingAnchor, constant:   -8),
-            articleLabelToLink.bottomAnchor.constraint(equalTo: containerViewForArticle.bottomAnchor, constant: -8),
-        ])
-    }
-
-    private func setUpConstraintsForPageControl() {
-        NSLayoutConstraint.activate([
-            // Container View for Page Control Constraints
-            containerViewForPageControl.topAnchor.constraint(equalTo: containerViewForArticle.bottomAnchor, constant: 20),
-            containerViewForPageControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            containerViewForPageControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            containerViewForPageControl.bottomAnchor.constraint(greaterThanOrEqualTo: scrollViewForPage.bottomAnchor, constant: -20),
-
-            // Three Words Label Constraints
-            threeWordsLabel.topAnchor.constraint(equalTo: containerViewForPageControl.topAnchor, constant: 12),
-            threeWordsLabel.leadingAnchor.constraint(equalTo: containerViewForPageControl.leadingAnchor, constant: 8),
-            threeWordsLabel.trailingAnchor.constraint(equalTo: containerViewForPageControl.trailingAnchor, constant: -8),
-
-            // Scroll View Constraints
-            scrollView.topAnchor.constraint(equalTo: threeWordsLabel.bottomAnchor, constant: 15),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -5),
-
-            // Page Control Constraints
-            pageControl.leadingAnchor.constraint(equalTo: containerViewForPageControl.leadingAnchor, constant: 8),
-            pageControl.trailingAnchor.constraint(equalTo: containerViewForPageControl.trailingAnchor, constant: -8),
-            pageControl.bottomAnchor.constraint(equalTo: containerViewForPageControl.bottomAnchor, constant: -10)
-        ])
-    }
-
-    // MARK: UI Functions
-    private func createContainerView() -> UIView {
-        let view = UIView()
-        view.backgroundColor = UIColor.secondarySystemGroupedBackground
-        view.layer.cornerRadius = 15
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
-
-    private func setUpContainerViews() {
-        containerViewForQuote = createContainerView()
-        containerViewForArticle = createContainerView()
-        containerViewForPageControl = createContainerView()
-    }
-
-    private func createLabel(text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = FontHelper.scaledFont21Bold
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }
-
-    private func setUpLabels() {
-        quoteLabel = createLabel(text: "quote".localized)
-        articleLabel = createLabel(text: "article_for_day".localized)
-        threeWordsLabel = createLabel(text: "todays_words".localized)
     }
 
     private func setScrollView() {
