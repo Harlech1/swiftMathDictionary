@@ -14,8 +14,9 @@ class LanguageViewController: UIViewController {
     let languagesDetail = ["Turkish", "Default"]
     let languagesTR = ["Türkçe", "English"]
     let languagesDetailTR = ["Varsayılan", "İngilizce"]
-    var totalHeight : CGFloat = 0.0
-    var tableView : UITableView!
+    var totalHeight: CGFloat = 0.0
+
+    lazy var tableView = initTableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,7 @@ class LanguageViewController: UIViewController {
 
         view.backgroundColor = UIColor.systemGroupedBackground
 
-        tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.layer.cornerRadius = 15
-        tableView.isScrollEnabled = false
-        tableView.dataSource = self
-        tableView.delegate = self
-
-        view.addSubview(tableView)
+        addSubviews()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -45,15 +39,6 @@ class LanguageViewController: UIViewController {
 
         setUpConstraints()
         tableView.reloadData()
-    }
-
-    private func setUpConstraints() {
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            tableView.heightAnchor.constraint(equalToConstant: totalHeight),
-        ])
     }
 }
 

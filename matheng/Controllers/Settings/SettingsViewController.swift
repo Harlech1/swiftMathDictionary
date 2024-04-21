@@ -9,7 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var tableView: UITableView!
+    lazy var tableView = initTableView()
+
     var totalHeight: CGFloat = 0.0
     let settingsData = ["theme".localized, "notifications".localized, "language".localized]
     let images = ["paintpalette.fill","bell.fill","globe"]
@@ -22,14 +23,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         title = "settings".localized
 
-        tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.layer.cornerRadius = 15
-        tableView.isScrollEnabled = false
-        tableView.dataSource = self
-        tableView.delegate = self
-
-        view.addSubview(tableView)
+        addSubviews()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,6 +84,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
 
@@ -117,15 +112,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         setUpConstraints()
         tableView.reloadData()
-    }
-
-    private func setUpConstraints() {
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            tableView.heightAnchor.constraint(equalToConstant: totalHeight),
-        ])
     }
 
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {

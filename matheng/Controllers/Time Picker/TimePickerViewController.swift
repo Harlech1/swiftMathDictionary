@@ -12,16 +12,7 @@ class TimePickerViewController: UIViewController {
     let selectedTimeKey = "selectedTime"
     let settingsOptions = ["Allow Notifications"]
 
-    let timePicker : UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.translatesAutoresizingMaskIntoConstraints = false
-        timePicker.preferredDatePickerStyle = .wheels
-        timePicker.datePickerMode = .time
-        timePicker.layer.borderColor = UIColor.myOrange.cgColor
-        timePicker.layer.borderWidth = 1.0
-        timePicker.layer.cornerRadius = 10
-        return timePicker
-    }()
+    lazy var timePicker = initTimePicker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +20,6 @@ class TimePickerViewController: UIViewController {
         title = "time_picker".localized
         
         view.backgroundColor = UIColor.systemGroupedBackground
-
-        view.addSubview(timePicker)
-
-        let doneButton = UIBarButtonItem(title: "done".localized, style: .done, target: self, action: #selector(doneButtonTapped))
-        navigationItem.rightBarButtonItem = doneButton
-
-        timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
 
         let calendar = Calendar.current
         var dateComponents = DateComponents()
@@ -52,17 +36,9 @@ class TimePickerViewController: UIViewController {
             UserDefaults.standard.set(selectedTime, forKey: selectedTimeKey)
         }
         
+        setNavigationItems()
         setUpConstraints()
         scheduleDailyNotificationFromUserDefaults()
-    }
-
-    private func setUpConstraints() {
-        NSLayoutConstraint.activate([
-            timePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            timePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            timePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            timePicker.heightAnchor.constraint(equalToConstant: 200),
-        ])
     }
 
     @objc func doneButtonTapped() {
