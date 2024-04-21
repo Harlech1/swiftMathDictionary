@@ -13,13 +13,7 @@ class ColorPickerViewController: UIViewController {
     
     let colors = Constant.Colors.appThemeColors
 
-    let containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.secondarySystemGroupedBackground
-        view.layer.cornerRadius = 15
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    lazy var colorContainerView = initColorContainerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,21 +22,28 @@ class ColorPickerViewController: UIViewController {
         
         view.backgroundColor = UIColor.systemGroupedBackground
 
-        view.addSubview(containerView)
+        addSubviews()
+        setupNavigationItems()
+        setupConstraints()
+    }
 
-        containerView.backgroundColor = UIColor.secondarySystemGroupedBackground
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        let cancelButton = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancelButtonTapped))
-        navigationItem.leftBarButtonItem = cancelButton
+        setColorsUI()
 
-        let doneButton = UIBarButtonItem(title: "done".localized, style: .done, target: self, action: #selector(doneButtonTapped))
-        navigationItem.rightBarButtonItem = doneButton
-
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-        ])
+        if let colorData = UserDefaults.standard.data(forKey: "color") {
+            do {
+                if let savedColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) {
+                    for subview in colorContainerView.subviews {
+                        if subview.backgroundColor == savedColor {
+                            subview.layer.borderWidth = 5.0
+                            subview.layer.borderColor = UIColor.gray.cgColor
+                        }
+                    }
+                }
+            } catch {}
+        }
     }
 
     @objc func cancelButtonTapped() {
@@ -62,25 +63,6 @@ class ColorPickerViewController: UIViewController {
             print("Hata: \(error)")
         }
         performSegue(withIdentifier: "unwindSegue", sender: self)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        setColorsUI()
-
-        if let colorData = UserDefaults.standard.data(forKey: "color") {
-            do {
-                if let savedColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) {
-                    for subview in containerView.subviews {
-                        if subview.backgroundColor == savedColor {
-                            subview.layer.borderWidth = 5.0
-                            subview.layer.borderColor = UIColor.gray.cgColor
-                        }
-                    }
-                }
-            } catch {}
-        }
     }
 
     func getOffset() -> CGFloat {
@@ -103,23 +85,23 @@ class ColorPickerViewController: UIViewController {
             colorView.addGestureRecognizer(tapGesture)
             colorView.clipsToBounds = true
 
-            containerView.addSubview(colorView)
+            colorContainerView.addSubview(colorView)
 
             if(index < 6) {
                 NSLayoutConstraint.activate([
-                    colorView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: getOffset()),
+                    colorView.topAnchor.constraint(equalTo: colorContainerView.topAnchor, constant: getOffset()),
                     colorView.widthAnchor.constraint(equalToConstant: 40),
                     colorView.heightAnchor.constraint(equalToConstant: 40),
-                    colorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: offsetX),
+                    colorView.leadingAnchor.constraint(equalTo: colorContainerView.leadingAnchor, constant: offsetX),
 
                 ])
             } else {
                 NSLayoutConstraint.activate([
-                    colorView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: getOffset() + offsetY),
+                    colorView.topAnchor.constraint(equalTo: colorContainerView.topAnchor, constant: getOffset() + offsetY),
                     colorView.widthAnchor.constraint(equalToConstant: 40),
                     colorView.heightAnchor.constraint(equalToConstant: 40),
-                    colorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: offsetX-(6*(getOffset()+40))),
-                    colorView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -getOffset()),
+                    colorView.leadingAnchor.constraint(equalTo: colorContainerView.leadingAnchor, constant: offsetX-(6*(getOffset()+40))),
+                    colorView.bottomAnchor.constraint(equalTo: colorContainerView.bottomAnchor, constant: -getOffset()),
                 ])
             }
             offsetX += getOffset() + 40
@@ -134,7 +116,7 @@ class ColorPickerViewController: UIViewController {
         let borderWidth: CGFloat = 5.0
         let borderColor: UIColor = .gray
 
-        containerView.subviews.forEach { subview in
+        colorContainerView.subviews.forEach { subview in
             subview.layer.borderWidth = 0
         }
 

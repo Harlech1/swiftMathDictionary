@@ -14,6 +14,8 @@
 		D126EE2E2BD5019D001DBD0E /* Constant+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE2D2BD5019D001DBD0E /* Constant+Colors.swift */; };
 		D126EE302BD50341001DBD0E /* Constant+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE2F2BD50341001DBD0E /* Constant+Words.swift */; };
 		D126EE322BD508CC001DBD0E /* ArticleViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE312BD508CC001DBD0E /* ArticleViewController+UI.swift */; };
+		D126EE342BD50AAB001DBD0E /* ColorPickerViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE332BD50AAB001DBD0E /* ColorPickerViewController+UI.swift */; };
+		D126EE362BD55410001DBD0E /* DetailsViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */; };
 		D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12D17662B172A5C00D723A5 /* FavoritesModel.xcdatamodeld */; };
 		D14807972AD5F80000BB93BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807962AD5F80000BB93BA /* AppDelegate.swift */; };
 		D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807982AD5F80000BB93BA /* SceneDelegate.swift */; };
@@ -42,6 +44,8 @@
 		D126EE2D2BD5019D001DBD0E /* Constant+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Colors.swift"; sourceTree = "<group>"; };
 		D126EE2F2BD50341001DBD0E /* Constant+Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Words.swift"; sourceTree = "<group>"; };
 		D126EE312BD508CC001DBD0E /* ArticleViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleViewController+UI.swift"; sourceTree = "<group>"; };
+		D126EE332BD50AAB001DBD0E /* ColorPickerViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController+UI.swift"; sourceTree = "<group>"; };
+		D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UI.swift"; sourceTree = "<group>"; };
 		D12D17672B172A5C00D723A5 /* FavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesModel.xcdatamodel; sourceTree = "<group>"; };
 		D14807932AD5F80000BB93BA /* matheng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matheng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14807962AD5F80000BB93BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				D181673E2AD72FAB00C3D552 /* DetailsViewController.swift */,
+				D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D662BA2B1CD1E400AEF8F8 /* ColorPickerViewController.swift */,
+				D126EE332BD50AAB001DBD0E /* ColorPickerViewController+UI.swift */,
 			);
 			path = "Color Picker";
 			sourceTree = "<group>";
@@ -228,8 +234,8 @@
 		D14807952AD5F80000BB93BA /* matheng */ = {
 			isa = PBXGroup;
 			children = (
-				D126EE202BD4FCC9001DBD0E /* Constants */,
 				D126EE132BD4FB8D001DBD0E /* App */,
+				D126EE202BD4FCC9001DBD0E /* Constants */,
 				D126EE152BD4FC37001DBD0E /* Controllers */,
 				D126EE142BD4FBA9001DBD0E /* Resources */,
 				D1B364132B1377AC00570DB9 /* Utils */,
@@ -324,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D126EE362BD55410001DBD0E /* DetailsViewController+UI.swift in Sources */,
 				D18167372AD6FA6300C3D552 /* HomeViewController.swift in Sources */,
 				D14807972AD5F80000BB93BA /* AppDelegate.swift in Sources */,
 				D1D72E302B2F1ED9005412E2 /* LanguageViewController.swift in Sources */,
@@ -334,6 +341,7 @@
 				D126EE2E2BD5019D001DBD0E /* Constant+Colors.swift in Sources */,
 				95E5D0EC2AD8116500B3763B /* FavoritesViewController.swift in Sources */,
 				D126EE2A2BD4FF9A001DBD0E /* Constant+Articles.swift in Sources */,
+				D126EE342BD50AAB001DBD0E /* ColorPickerViewController+UI.swift in Sources */,
 				D17E019E2AE534940043A42B /* ArticleViewController.swift in Sources */,
 				D1D662BB2B1CD1E400AEF8F8 /* ColorPickerViewController.swift in Sources */,
 				D126EE302BD50341001DBD0E /* Constant+Words.swift in Sources */,

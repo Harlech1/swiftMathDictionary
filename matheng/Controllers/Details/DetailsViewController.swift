@@ -12,37 +12,20 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
 
     var chosenIndex = 0
 
-    var webView: WKWebView!
     var count = 0
     var chosenWord: String?
     var chosenWordID: UUID?
 
     let turkishWords = Constant.Words.turkishWords
 
-    let rectangleView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.systemGroupedBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    let labelForTitle: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = FontHelper.scaledFont21Bold
-        return label
-    }()
+    lazy var rectangleView = initRectangleView()
+    lazy var labelForTitle = initTitleLabel()
+    lazy var webView = initWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(rectangleView)
-
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        webView.translatesAutoresizingMaskIntoConstraints = false
 
         let monitor = NWPathMonitor()
         monitor.pathUpdateHandler = { [weak self] path in
@@ -209,24 +192,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-
-    private func setUpConstraints() {
-        NSLayoutConstraint.activate([
-            rectangleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            rectangleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            rectangleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            rectangleView.heightAnchor.constraint(equalToConstant: 200),
-
-            webView.topAnchor.constraint(equalTo: rectangleView.bottomAnchor),
-            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
-            labelForTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            labelForTitle.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor),
-            labelForTitle.bottomAnchor.constraint(equalTo: rectangleView.bottomAnchor, constant: -20)
-        ])
-    }
+    
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
 
