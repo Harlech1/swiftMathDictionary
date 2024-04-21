@@ -16,6 +16,8 @@
 		D126EE322BD508CC001DBD0E /* ArticleViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE312BD508CC001DBD0E /* ArticleViewController+UI.swift */; };
 		D126EE342BD50AAB001DBD0E /* ColorPickerViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE332BD50AAB001DBD0E /* ColorPickerViewController+UI.swift */; };
 		D126EE362BD55410001DBD0E /* DetailsViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */; };
+		D126EE382BD559A5001DBD0E /* DictionaryViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE372BD559A5001DBD0E /* DictionaryViewController+UI.swift */; };
+		D126EE3A2BD55E6F001DBD0E /* FavoritesViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE392BD55E6F001DBD0E /* FavoritesViewController+UI.swift */; };
 		D12D17682B172A5C00D723A5 /* FavoritesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12D17662B172A5C00D723A5 /* FavoritesModel.xcdatamodeld */; };
 		D14807972AD5F80000BB93BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807962AD5F80000BB93BA /* AppDelegate.swift */; };
 		D14807992AD5F80000BB93BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14807982AD5F80000BB93BA /* SceneDelegate.swift */; };
@@ -46,6 +48,8 @@
 		D126EE312BD508CC001DBD0E /* ArticleViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleViewController+UI.swift"; sourceTree = "<group>"; };
 		D126EE332BD50AAB001DBD0E /* ColorPickerViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController+UI.swift"; sourceTree = "<group>"; };
 		D126EE352BD55410001DBD0E /* DetailsViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UI.swift"; sourceTree = "<group>"; };
+		D126EE372BD559A5001DBD0E /* DictionaryViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DictionaryViewController+UI.swift"; sourceTree = "<group>"; };
+		D126EE392BD55E6F001DBD0E /* FavoritesViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesViewController+UI.swift"; sourceTree = "<group>"; };
 		D12D17672B172A5C00D723A5 /* FavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesModel.xcdatamodel; sourceTree = "<group>"; };
 		D14807932AD5F80000BB93BA /* matheng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matheng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14807962AD5F80000BB93BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D181673A2AD6FA8D00C3D552 /* DictionaryViewController.swift */,
+				D126EE372BD559A5001DBD0E /* DictionaryViewController+UI.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				95E5D0EB2AD8116500B3763B /* FavoritesViewController.swift */,
+				D126EE392BD55E6F001DBD0E /* FavoritesViewController+UI.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -343,7 +349,9 @@
 				D126EE2A2BD4FF9A001DBD0E /* Constant+Articles.swift in Sources */,
 				D126EE342BD50AAB001DBD0E /* ColorPickerViewController+UI.swift in Sources */,
 				D17E019E2AE534940043A42B /* ArticleViewController.swift in Sources */,
+				D126EE3A2BD55E6F001DBD0E /* FavoritesViewController+UI.swift in Sources */,
 				D1D662BB2B1CD1E400AEF8F8 /* ColorPickerViewController.swift in Sources */,
+				D126EE382BD559A5001DBD0E /* DictionaryViewController+UI.swift in Sources */,
 				D126EE302BD50341001DBD0E /* Constant+Words.swift in Sources */,
 				D1E7ED972B2A05290086BBAE /* ColorHelper.swift in Sources */,
 				D126EE322BD508CC001DBD0E /* ArticleViewController+UI.swift in Sources */,

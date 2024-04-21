@@ -10,8 +10,6 @@ import CoreData
 
 class FavoritesViewController: UIViewController{
 
-    @IBOutlet weak var tableView: UITableView!
-
     var wordArray = [String]()
     var idArray = [UUID]()
 
@@ -22,44 +20,19 @@ class FavoritesViewController: UIViewController{
 
     let turkishWords: [String] = Constant.Words.turkishWords
 
-    let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    lazy var tableView = initTableView()
 
-    let upperLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        let attributedString = NSMutableAttributedString(string: "no_favorites".localized)
-        attributedString.addAttributes([.font: UIFont.boldSystemFont(ofSize: 21.0)], range: NSRange(location: 0, length: attributedString.length))
-        label.attributedText = attributedString
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let lowerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "no_favorites_subtext".localized
-        label.textAlignment = .center
-        label.numberOfLines = 3
-        label.textColor = .systemGray
-        label.font = FontHelper.scaledFont15
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    lazy var noFavoritesView = initNoFavoritesView()
+    lazy var noFavoritesTitleLabel = initNoFavoritesTitleLabel()
+    lazy var noFavoritesSubtitleLabel = initNoFavoritesSubtitleLabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(containerView)
         title = "favorites".localized
 
-        containerView.addSubview(upperLabel)
-        containerView.addSubview(lowerLabel)
-
-        tableView.delegate = self
-        tableView.dataSource = self
+        addSubviews()
+        setupConstraints()
 
         getData()
     }
@@ -71,31 +44,7 @@ class FavoritesViewController: UIViewController{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
 
-        if !tableView.visibleCells.isEmpty {
-            containerView.isHidden = true
-            upperLabel.isHidden = true
-            lowerLabel.isHidden = true
-        } else {
-            containerView.isHidden = false
-            upperLabel.isHidden = false
-            lowerLabel.isHidden = false
-        }
-
-        NSLayoutConstraint.activate([
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-
-            upperLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            upperLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 50),
-            upperLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -50),
-
-            lowerLabel.topAnchor.constraint(equalTo: upperLabel.bottomAnchor, constant: 3),
-            lowerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 50),
-            lowerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -50),
-            lowerLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
-        ])
+        setNoFavoritesView()
 
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: "newData"), object: nil)
         tableView.reloadData()
@@ -137,7 +86,6 @@ class FavoritesViewController: UIViewController{
         }
     }
 }
-
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
 

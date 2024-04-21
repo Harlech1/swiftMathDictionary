@@ -18,24 +18,11 @@
                     <view key="view" contentMode="scaleToFill" id="hFv-br-8Es">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-8x-BDk">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xhp-fQ-fs5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Ued-8x-BDk" firstAttribute="top" secondItem="Xhp-fQ-fs5" secondAttribute="top" id="38j-Ws-cqY"/>
-                            <constraint firstItem="Xhp-fQ-fs5" firstAttribute="trailing" secondItem="Ued-8x-BDk" secondAttribute="trailing" id="Hym-U5-4uv"/>
-                            <constraint firstItem="Ued-8x-BDk" firstAttribute="leading" secondItem="Xhp-fQ-fs5" secondAttribute="leading" id="O0v-wt-clR"/>
-                            <constraint firstItem="Xhp-fQ-fs5" firstAttribute="bottom" secondItem="Ued-8x-BDk" secondAttribute="bottom" id="QXl-mf-AFs"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dictionary" id="IqJ-3n-mOW"/>
                     <connections>
-                        <outlet property="tableView" destination="Ued-8x-BDk" id="TuW-8b-yg4"/>
                         <segue destination="pDM-4o-lyJ" kind="show" identifier="toDetails" id="maT-uO-avM"/>
                     </connections>
                 </viewController>
@@ -183,26 +170,13 @@
                     <view key="view" contentMode="scaleToFill" id="0oD-Te-B6X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Mk-Qt-Czy">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="k2J-T9-v8P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4Mk-Qt-Czy" firstAttribute="top" secondItem="k2J-T9-v8P" secondAttribute="top" id="0Ou-jg-SFS"/>
-                            <constraint firstItem="k2J-T9-v8P" firstAttribute="trailing" secondItem="4Mk-Qt-Czy" secondAttribute="trailing" id="2nw-rz-jiB"/>
-                            <constraint firstItem="4Mk-Qt-Czy" firstAttribute="leading" secondItem="k2J-T9-v8P" secondAttribute="leading" id="Yxu-aO-7gT"/>
-                            <constraint firstItem="k2J-T9-v8P" firstAttribute="bottom" secondItem="4Mk-Qt-Czy" secondAttribute="bottom" id="cNG-2f-vjg"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="Tdh-kR-IjZ">
                         <barButtonItem key="backBarButtonItem" title="Favorites" id="oTm-jv-rMn"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="4Mk-Qt-Czy" id="leX-l3-lCM"/>
                         <segue destination="pDM-4o-lyJ" kind="show" identifier="toDictionaryWithoutBar" id="HWM-p4-8ho"/>
                     </connections>
                 </viewController>
@@ -344,7 +318,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6PA-65-zym"/>
+        <segue reference="HWM-p4-8ho"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="character.book.closed" catalog="system" width="115" height="128"/>

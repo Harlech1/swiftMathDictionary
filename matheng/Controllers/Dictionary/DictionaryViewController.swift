@@ -14,12 +14,12 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
     var selectedIndex = 0
 
     var filteredData: [String] = []
-    var searchController: UISearchController!
 
     var sections: [String: [String]] = [:]
-    var stringArray  : [String] = []
+    var stringArray: [String] = []
 
-    @IBOutlet weak var tableView: UITableView!
+    lazy var tableView = initTableView()
+    lazy var searchController = initSearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,13 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
 
         view.backgroundColor = UIColor.systemGroupedBackground
 
-        setupSearchController()
+        addSubviews()
+        setupConstraints()
+        setupNavigationItems()
 
         filteredData = turkishWords
         filteredData.sort()
         updateSections()
-
-        tableView.dataSource = self
-        tableView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,18 +67,6 @@ class DictionaryViewController: UIViewController, UISearchControllerDelegate {
             }
         }
         tableView.reloadData()
-    }
-
-    private func setupSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "search".localized
-        searchController.searchBar.delegate = self
-
-        searchController.searchBar.setValue("cancel".localized, forKey: "cancelButtonText")
-
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     private func filterContentForSearchText(_ searchText: String) {
