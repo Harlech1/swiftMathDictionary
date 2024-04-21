@@ -28,9 +28,8 @@ class FavoritesViewController: UIViewController{
         return view
     }()
 
-    // MARK: Label Views
     let upperLabel: UILabel = {
-        let label: UILabel = UILabel()
+        let label = UILabel()
         label.textAlignment = .center
         let attributedString = NSMutableAttributedString(string: "no_favorites".localized)
         attributedString.addAttributes([.font: UIFont.boldSystemFont(ofSize: 21.0)], range: NSRange(location: 0, length: attributedString.length))

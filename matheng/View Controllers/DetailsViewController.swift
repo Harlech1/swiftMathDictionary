@@ -19,7 +19,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
 
     let turkishWords = Constants.turkishWords
 
-    // MARK: Views
     let rectangleView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemGroupedBackground
@@ -120,7 +119,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
             return nil
         }
     }
-    // MARK: @objc Functions
+
     @objc func heartButtonClicked() {
         let isFavorited = checkIfFavorited(labelForTitle.text!)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -158,7 +157,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 
-    // MARK: WebView Functions
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let nsError = error as NSError
         
@@ -201,7 +199,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
-    // MARK: Functions
     private func showError(title: String, message: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

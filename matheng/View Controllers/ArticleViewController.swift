@@ -14,7 +14,7 @@ class ArticleViewController: UIViewController {
     var headers = Constants.headers
     var scripts = Constants.scripts
 
-    let textView : UITextView = {
+    let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor.secondarySystemGroupedBackground
         textView.translatesAutoresizingMaskIntoConstraints = false

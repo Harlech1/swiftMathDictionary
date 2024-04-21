@@ -104,10 +104,8 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
                     tabBarController?.tabBar.tintColor = .myOrange
                 }
             }
-
             return cell
         }
-
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

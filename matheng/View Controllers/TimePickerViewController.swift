@@ -12,9 +12,8 @@ class TimePickerViewController: UIViewController {
     let selectedTimeKey = "selectedTime"
     let settingsOptions = ["Allow Notifications"]
 
-     // MARK: Views
     let timePicker : UIDatePicker = {
-        let timePicker : UIDatePicker = UIDatePicker()
+        let timePicker = UIDatePicker()
         timePicker.translatesAutoresizingMaskIntoConstraints = false
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.datePickerMode = .time
@@ -104,7 +103,6 @@ class TimePickerViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         if let savedColorData = UserDefaults.standard.data(forKey: "color") {
             do {
                 if let savedColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: savedColorData) {

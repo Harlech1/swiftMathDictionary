@@ -270,7 +270,6 @@ class HomeViewController: UIViewController {
         pageControl.currentPage = currentPage
     }
 
-    // MARK: Override Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDictionaryInHome" {
             let destinationVC = segue.destination as! DetailsViewController
@@ -318,11 +317,9 @@ class HomeViewController: UIViewController {
     }
 
     private func underline() -> NSAttributedString? {
-        // MARK: Article Label To Link
         let attributedString = NSMutableAttributedString(string: UserDefaults.standard.string(forKey: "wordOfTheDayLabel") ?? "Error, try restarting.")
         let range = NSRange(location: 0, length: attributedString.length)
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
-
         return attributedString
     }
 
@@ -380,7 +377,6 @@ class HomeViewController: UIViewController {
         }
     }
 
-    // MARK: IBAction Functions
     @objc func labelTappedToArticle() {
         guard let indexInOriginalData = headers.firstIndex(of: articleLabelToLink.text!) else {
             return
